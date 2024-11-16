@@ -1,0 +1,38 @@
+.product-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.product-tem__description p {
+    font-size: 13px;
+}
+
+.product-tem__picture img {
+    max-width: 60px;
+}
+
+.quantity-block {
+    display: flex;
+    align-items: end;
+    gap: 15px;
+
+}
+
+.plus,
+.minus {
+    font-size: 25px;
+    line-height: 1;
+
+}
+
+.quantity-product {
+    font-size: 25px;
+    line-height: 1;
+}
+
+.delete-delete {
+    width: 25px;
+    height: 25px;
+}
+

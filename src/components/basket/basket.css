@@ -1,0 +1,35 @@
+.basket {
+    position: fixed;
+    top: 70px;
+    right: 15px;
+    background: white;
+    border-radius: 25px;
+    max-width: 350px;
+    padding: 15px;
+    border-radius: 25px;
+    border: 2px solid #fbc16f;
+    height: 400px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.button-close {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 15px;
+}
+
+.btn-close {
+    font-size: 18px;
+    color: white;
+    line-height: 1;
+    background: #fca637;
+    padding: 5px 15px;
+    transition: background 0.3s ease 0s;
+}
+.btn-close:hover {
+    background: #e99a33;
+ 
+}

@@ -5,6 +5,7 @@ import Header from './components/header/header.jsx';
 import CardItemBody from './components/card-item-body/card-item-body.jsx';
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import Bascet from './components/basket/basket.jsx';
 
 // Главный компонент, где будет храниться состояние товаров
 function App() {
@@ -59,6 +60,9 @@ function App() {
       <Header />
       {/* Передаем состояние товаров в CardItemBody */}
       <CardItemBody items={items} />
+      <Bascet>
+
+        </Bascet>
     </StrictMode>
   );
 }

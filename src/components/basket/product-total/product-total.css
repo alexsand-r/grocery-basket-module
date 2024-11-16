@@ -1,0 +1,40 @@
+.product-total {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.product-total-price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product-total-price__item {}
+
+.product-total-price__price {
+    font-size: 16px;
+}
+
+.product-total-price__price span {
+    font-size: 20px;
+    margin-right: 15px;
+}
+
+.btn-buy {
+    text-transform: capitalize;
+    font-size: 18px;
+    color: white;
+    background: #35a413;
+    padding: 5px 0px 5px 0px;
+    width: 100%;
+    transition: background 0.3s ease 0s;
+}
+
+.btn-buy:hover {
+    background: #42c71a;
+}
+
+.hidden {
+    display: none;
+}
