@@ -1,0 +1,62 @@
+.card-item__element {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 20px;
+    border: #e4e2e2 solid 1px;
+    padding: 15px;
+    overflow: hidden;
+}
+
+
+.card-item__img img {
+    aspect-ratio: 1/1;
+    max-width: 100%;
+
+}
+
+.card-item__title {
+    line-height: 1.0;
+    flex: 1 1 auto;
+}
+
+.card-item__rating {}
+
+.card-item__star {}
+
+.card-item__action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-item__price {
+    font-size: 18px;
+    line-height: 1.0;
+}
+
+.card-item__price span {
+    font-size: 24px;
+    line-height: 1.0;
+    margin-right: 15px;
+}
+
+.card-item__bascet {
+    aspect-ratio: 1/1;
+    background-color: inherit;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease 0s;
+}
+
+.card-item__bascet:hover {
+    background-color: #e4e2e2;
+}
+
+.card-item__bascet:active {
+    background-color: #9df084;
+}
+.card-item__bascet-icon {
+    width: 32px;
+    height: 32px;
+}

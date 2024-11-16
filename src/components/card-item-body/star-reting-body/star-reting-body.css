@@ -1,0 +1,4 @@
+.card-item__rating{
+    display: flex;
+    gap: 10px;
+}
