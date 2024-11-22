@@ -1,16 +1,19 @@
 import BasketElement from '../basket-element/basket-element';
 import './product-list.css';
-import React, { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 
-function ProductCarList() {
-    const [basketItem, setBasketItem] = useState(
-        {}
-    )
+
+function ProductCarList({basketItems, deleteProduct}) {
+   
+
+
     return (
         <div className="product-list">
-            <BasketElement />
+ {/*  map  прохожусь по переданному массиву basketItems чтбы отрисовать  */}
+            {basketItems.map((product) => (
+                <BasketElement key={product.id} product={product} deleteProduct={deleteProduct } />
+            ))}
+            
             
         </div>
     )

@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Bascet from './components/basket/basket.jsx';
 
-// Главный компонент, где будет храниться состояние товаров
+// Главный компонент, где будет храниться состояние товаров и корзины
 function App() {
   const [items] = useState([
     {
@@ -55,17 +55,47 @@ function App() {
     // Можно добавить больше товаров
   ]);
 
+  const [basketItems, setBasketItems] = useState([]); // Состояние для товаров в корзине
+    // Функция для добавления товаров в корзину
+  const addToBasket = (item) => {
+    setBasketItems((prevItems) => {
+      // Проверяем, есть ли товар в корзине
+      const existingItem = prevItems.find((basketItem) => basketItem.id === item.id);
+
+      // Если товар уже есть в корзине, увеличиваем количество
+      if (existingItem) {
+        return prevItems.map((basketItem) =>
+          basketItem.id === item.id
+            ? { ...basketItem, quantity: basketItem.quantity + 1 } // Увеличиваем количество
+            : basketItem
+        );
+      }
+
+      // Если товара нет в корзине, добавляем его
+      return [...prevItems, { ...item, quantity: 1 }];
+    });
+  };
+
+   // Выводим товары в корзине в консоль
+  console.log(basketItems);
+const deleteProduct = (id) => {
+  setBasketItems((prevItems) => {
+    const updatedItems = prevItems.filter((item) => item.id !== id); // Оставляем все элементы, кроме того, у которого совпадает id
+    console.log('Удаляю товар с id ' + id);
+    return updatedItems; // Обновляем состояние новым массивом
+  });
+};
+
   return (
     <StrictMode>
       <Header />
-      {/* Передаем состояние товаров в CardItemBody */}
-      <CardItemBody items={items} />
-      <Bascet>
-
-        </Bascet>
+      {/* Передаем товары и функцию addToBasket в CardItemBody */}
+      <CardItemBody items={items} addToBasket={addToBasket} />
+      <Bascet basketItems={basketItems} deleteProduct={deleteProduct} /> {/* Передаем корзину в компонент Bascet */}
     </StrictMode>
   );
 }
 
 createRoot(document.getElementById('root')).render(<App />);
+
 
