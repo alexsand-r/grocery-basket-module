@@ -57,27 +57,37 @@ function App() {
 
   const [basketItems, setBasketItems] = useState([]); // Состояние для товаров в корзине
     // Функция для добавления товаров в корзину
-  const addToBasket = (item) => {
-    setBasketItems((prevItems) => {
-      // Проверяем, есть ли товар в корзине
-      const existingItem = prevItems.find((basketItem) => basketItem.id === item.id);
+ const addToBasket = (item) => {
+  setBasketItems((prevItems) => {
+    // Проверяем, есть ли товар в корзине
+    const existingItem = prevItems.find((basketItem) => basketItem.id === item.id);
 
-      // Если товар уже есть в корзине, увеличиваем количество
-      if (existingItem) {
-        return prevItems.map((basketItem) =>
-          basketItem.id === item.id
-            ? { ...basketItem, quantity: basketItem.quantity + 1 } // Увеличиваем количество
-            : basketItem
-        );
-      }
+    // Если товар уже есть в корзине, ничего не делаем
+    if (existingItem) {
+      console.log(`Товар с id ${item.id} уже находится в корзине.`);
+      return prevItems; // Возвращаем текущий массив без изменений
+    }
 
-      // Если товара нет в корзине, добавляем его
-      return [...prevItems, { ...item, quantity: 1 }];
-    });
-  };
+    // Если товара нет в корзине, добавляем его
+    return [...prevItems, { ...item, quantity: 1 }];
+  });
+};
+
+  // счетчик товара в корзине
+  const updateProductQuantity = (id, delta) => {
+  setBasketItems((prevItems) =>
+    prevItems.map((item) =>
+      item.id === id
+        ? { ...item, quantity: Math.max(item.quantity + delta, 1) }
+        : item
+    )
+  );
+};
+
 
    // Выводим товары в корзине в консоль
   console.log(basketItems);
+  // функция для удаления товара
 const deleteProduct = (id) => {
   setBasketItems((prevItems) => {
     const updatedItems = prevItems.filter((item) => item.id !== id); // Оставляем все элементы, кроме того, у которого совпадает id
@@ -85,13 +95,18 @@ const deleteProduct = (id) => {
     return updatedItems; // Обновляем состояние новым массивом
   });
 };
-
+ 
+   // Функция для подсчёта общей стоимости
+  const calculateTotalPrice = () => {
+    return basketItems.reduce((total, item) => total + item.price * (item.quantity || 1), 0);
+  };
+  const totalPrice = calculateTotalPrice();
   return (
     <StrictMode>
       <Header />
       {/* Передаем товары и функцию addToBasket в CardItemBody */}
       <CardItemBody items={items} addToBasket={addToBasket} />
-      <Bascet basketItems={basketItems} deleteProduct={deleteProduct} /> {/* Передаем корзину в компонент Bascet */}
+      <Bascet basketItems={basketItems} deleteProduct={deleteProduct} totalPrice={totalPrice} updateQuantity={updateProductQuantity} /> {/* Передаем корзину в компонент Bascet */}
     </StrictMode>
   );
 }

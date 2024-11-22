@@ -5,17 +5,7 @@ import { FaMinus } from "react-icons/fa6";
 import React, { useState } from 'react';
 
 
-function BasketElement({ product, deleteProduct }) {
-
-const [count, setCount] = useState(0);
-
-const onClickPlus = () => {
-  setCount((prevCount) => prevCount + 1); // Используем prevCount для точного обновления
-};
-
-const onClickMines = () => {
-  setCount((prevCount) => (prevCount > 0 ? prevCount - 1 : 0)); // Проверяем предыдущее значение
-};
+function BasketElement({ product, deleteProduct, updateQuantity }) {
 
     
     return (
@@ -27,9 +17,9 @@ const onClickMines = () => {
                 <p>{product.title }</p>
             </div>
             <div className="quantity-block">
-                <FaPlus className="plus" onClick={onClickPlus} />
-                <span className="quantity-product">{count}</span>
-                <FaMinus className="minus" onClick={onClickMines} />
+                <FaPlus className="plus" onClick={() => updateQuantity(product.id, 1)} />
+                <span className="quantity-product">{product.quantity}</span>
+                <FaMinus className="minus" onClick={() => updateQuantity(product.id, -1)}  />
                            
                 <RiDeleteBinLine className='delete-delete' onClick={()=> deleteProduct(product.id)} />
                

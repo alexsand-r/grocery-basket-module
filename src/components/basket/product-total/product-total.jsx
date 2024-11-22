@@ -1,12 +1,12 @@
 import './product-total.css';
 
-function ProductTotal() {
+function ProductTotal({totalPrice}) {
  
     return (
         <div className="product-total">
             <div className="product-total-price">
-                <div className="product-total-price__item">Total</div>
-                <div className="product-total-price__price"><span></span>грн</div>
+                <div className="product-total-price__item">Вартість товару</div>
+                <div className="product-total-price__price"><span>{totalPrice.toFixed(2)}</span>грн</div>
             </div>
             <button className="btn-buy" type="button">buy</button>
             

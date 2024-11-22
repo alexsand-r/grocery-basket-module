@@ -3,7 +3,7 @@ import './product-list.css';
 
 
 
-function ProductCarList({basketItems, deleteProduct}) {
+function ProductCarList({basketItems, deleteProduct, updateQuantity}) {
    
 
 
@@ -11,7 +11,7 @@ function ProductCarList({basketItems, deleteProduct}) {
         <div className="product-list">
  {/*  map  прохожусь по переданному массиву basketItems чтбы отрисовать  */}
             {basketItems.map((product) => (
-                <BasketElement key={product.id} product={product} deleteProduct={deleteProduct } />
+                <BasketElement key={product.id} product={product} deleteProduct={deleteProduct } updateQuantity={updateQuantity} />
             ))}
             
             
