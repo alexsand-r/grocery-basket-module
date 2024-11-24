@@ -4,12 +4,12 @@ import { FiShoppingCart } from "react-icons/fi";
 
 
 
-function ButtonCart() {
+function ButtonCart({totalQuantity, toggleBasket}) {
     return (
-         <button type="button" className="header__bascet">
+         <button type="button" className="header__bascet" onClick={toggleBasket}>
             <FiShoppingCart className="header__cart" />
             <span className="test">
-                <span>0</span>
+                <span>{totalQuantity}</span>
             </span>
         </button>
     );

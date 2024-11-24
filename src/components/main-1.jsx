@@ -164,5 +164,3 @@ const deleteProduct = (id) => {
 }
 
 createRoot(document.getElementById('root')).render(<App />);
-
-
